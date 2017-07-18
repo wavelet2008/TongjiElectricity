@@ -1,0 +1,55 @@
+<!--pages/data/money.wxml-->
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">查询结果</view>
+    </view>
+    <view class="page__bd">
+        <view hidden="{{loading}}"  class="weui-loadmore">
+            <view class="weui-loading"></view>
+            <view class="weui-loadmore__tips">正在加载</view>
+        </view>
+        <view class="weui-form-preview">
+            <view class="weui-form-preview__hd">
+                <view hidden="{{!loading}}" class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">剩余金额</view>
+                    <view class="weui-form-preview__value_in-hd">¥{{result}}</view>
+                </view>
+            </view>
+            <view class="weui-form-preview__bd">
+                <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">校区</view>
+                    <view class="weui-form-preview__value">{{campusname}}</view>
+                </view>
+                <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">楼栋</view>
+                    <view class="weui-form-preview__value">{{buildname}}</view>
+                </view>
+                <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">楼层</view>
+                    <view class="weui-form-preview__value">{{centername}}</view>
+                </view>
+               <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">房间</view>
+                    <view class="weui-form-preview__value">{{roomname}}</view>
+                </view>
+                 <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">更新时间</view>
+                    <view class="weui-form-preview__value">{{time}}</view>
+                </view>
+            </view>
+            <view class="weui-form-preview__ft">
+                <navigator url="search" class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">重选房间                 </navigator>
+            </view>
+        </view>
+        <view class="button-sp-area">
+            <button class="weui-btn" type="default"  bindtap="clear" plain="true">全部重置</button>
+            <button class="weui-btn" type="primary" bindtap="record"  plain="true">充值记录</button>     
+        </view>
+            <view class="weui-footer weui-footer_fixed-bottom">
+          <navigator url="tjservice" class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">打赏开发者 </navigator>
+            <view class="weui-footer__text">Copyright © 2016-2017 tjservice.cn</view>
+        </view>
+ </view>
+  </view>
+
+

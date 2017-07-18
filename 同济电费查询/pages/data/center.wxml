@@ -1,0 +1,25 @@
+<!--pages/data/center.wxml-->
+<view>
+    <view class="page__hd">
+        <view class="page__title">{{title}}</view>
+    </view>
+  <picker-view style="width: 100%; height: 250px;" value="{{value}}" bindchange="bindChange">
+    <picker-view-column>
+      <view></view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:for="{{result}}" style="width: 100%;line-height:50px">{{item.name}}</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view></view>
+    </picker-view-column>
+  </picker-view>
+  <view style="height: 50px"> </view>
+  <view>
+          <view class="button-sp-area">
+            <button class="weui-btn mini-btn" type="primary" bindtap="clk" size="mini">确定</button>
+            <button class="weui-btn mini-btn" type="default" bindtap="refresh" size="mini">刷新</button>
+            <button class="weui-btn mini-btn" type="warn" bindtap="cancel" size="mini">取消</button>
+        </view>
+  </view>
+</view>

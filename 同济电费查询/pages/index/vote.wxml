@@ -1,0 +1,19 @@
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+    <view class="page__hd">
+        <view class="page__title">发布公告</view>
+    </view>
+    <view class="page__bd">
+        <view class="weui-cells__title">公告</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">
+                    <textarea name="content" class="weui-textarea" placeholder="请输入文本" value="{{content}}" bindblur="charChange" style="height: 3.3em"  >  </textarea>
+                    <view class="weui-textarea-counter">{{cnt}}/200</view>
+                </view>
+            </view>
+        </view>
+        <view class="weui-btn-area">
+            <button class="weui-btn" type="primary" disabled="{{dis}}" bindtap="submit">确定</button>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,20 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/data/search",
+    "pages/data/campus",
+    "pages/data/build",
+    "pages/data/center",
+    "pages/data/money",
+    "pages/index/vote",
+    "pages/data/tjservice",
+    "pages/data/record"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  }
+}

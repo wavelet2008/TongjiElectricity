@@ -1,0 +1,9 @@
+/* tjservice.wxss */
+.button-text-area{
+    margin: 0 auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 100%;
+    text-align: center;
+    font: medium;
+}
