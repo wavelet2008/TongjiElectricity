@@ -1,9 +1,22 @@
 /* pages/data/money.wxss */
 .weui-form-preview{
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 .button-sp-area{
     margin: 0 auto;
-    padding-top: 15px;
     width: 35%;
+}
+.page__hd {
+    padding: 0px;
+}
+.contact_view{
+  width:30px;
+  height: 30px;
+  background-color: #f60;
+  text-align: center;
+  align-items: center;
+  padding-top: 10px;
+  border-radius: 20px;
+  line-height: 42px;
+  padding: 2px;
 }

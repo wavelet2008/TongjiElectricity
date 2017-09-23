@@ -4,6 +4,7 @@ Page({
    title:"校区选择",
    result:[],
    campus:"",
+   index:0,
    name:"",
    temp:{}
   },
@@ -21,12 +22,14 @@ Page({
   },
   clk:function(){
     var campus = this.data.campus
+    var name=this.data.name
       wx.showModal({
         content: '所选校区：'+this.data.name,
         showCancel:true,
         success: function (res) {
           if (res.confirm) {
             wx.setStorageSync("campus", campus)
+                        wx.setStorageSync("campusname", name)
             wx.reLaunch({ url: '../data/campus' })
           } else if (res.cancel) {
           }

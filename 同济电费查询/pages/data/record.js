@@ -2,7 +2,7 @@
 Page({
   data: {
     startdate: "2017-01-01",
-    enddate: "2017-09-01",
+    enddate: "2017-12-01",
     result:[]
   },
 

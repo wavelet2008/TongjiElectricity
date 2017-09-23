@@ -33,12 +33,14 @@ Page({
   },
   clk:function(){
     var room = this.data.room
+        var name=this.data.name
     wx.showModal({
       content: '所选校区：' + this.data.name,
       showCancel: true,
       success: function (res) {
         if (res.confirm) {
           wx.setStorageSync("room", room)
+                                 wx.setStorageSync("roomname", name)
           wx.reLaunch({ url: '../data/money' })
         } else if (res.cancel) {
         }

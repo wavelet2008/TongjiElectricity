@@ -1,0 +1,43 @@
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+    <view class="page__hd">
+        <view class="page__title">金额预警beta</view>
+        <view class="page__desc">在您设定的房间金额低于一定值时，将通过邮件进行提醒(目前正处于测试期，请谨慎使用)。本服务每日进行一次检查，单个房间提醒三次后会自动关闭，以免造成干扰</view>
+    </view>
+    <view class="page__bd">
+        <view class="weui-toptips weui-toptips_warn" wx:if="{{warn}}">不能为空</view>
+        <view class="weui-cells__title">设定信息</view> 
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">邮箱地址</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input bindblur="namechange" class="weui-input" placeholder="{{information}}"/>
+                </view>
+            </view>
+ </view>
+        <view class="weui-cells__title">服务状态</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_switch">
+                <view class="weui-cell__bd">{{statustext}}</view>
+                <view class="weui-cell__ft">
+                    <switch checked="{{sth}}" bindchange="sthchange" />
+                </view>
+            </view>
+        </view>
+        <view class="weui-btn-area">
+            <picker bindchange="pickerchange" value="{{num}}" range="{{array}}">
+                <button type="primary">预警金额(不选则默认为￥10.0)</button>
+            </picker>                     
+        </view>
+        <view hidden="{{loading}}"  class="weui-loadmore">
+            <view class="weui-loading"></view>
+            <view class="weui-loadmore__tips">正在操作</view>
+        </view>
+        <view hidden="{{!loading}}" class="weui-btn-area">
+            <button class="weui-btn" type="default" bindtap="clk">确定</button>
+            <button class="weui-btn" type="warn" bindtap="dele">删除本房间</button>
+        </view>
+ 
+    </view>
+</view>

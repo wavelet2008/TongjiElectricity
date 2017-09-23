@@ -28,12 +28,14 @@ Page({
   },
   clk:function(){
     var build = this.data.build
+        var name=this.data.name
     wx.showModal({
       content: '所选校区：' + this.data.name,
       showCancel: true,
       success: function (res) {
         if (res.confirm) {
           wx.setStorageSync("build", build)
+          wx.setStorageSync("buildname", name)
           wx.reLaunch({ url: '../data/center' })
         } else if (res.cancel) {
         }

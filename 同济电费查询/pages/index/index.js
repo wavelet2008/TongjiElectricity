@@ -34,6 +34,12 @@ Page({
       })
     }
   },
+    getPhoneNumber: function(e) { 
+        console.log(e.detail.errMsg) 
+        console.log(e.detail.iv) 
+        console.log   (e.detail.encryptedData) 
+    } 
+    ,
   onLoad: function () {
     var that = this
     app.getUserInfo(
@@ -90,6 +96,25 @@ Page({
       wx.navigateTo({ url: '../data/money' })
     }
     else{
+      wx.showModal({
+        content: '未保存完整房间信息',
+        showCancel: false,
+        success: function (res) {
+          if (res.confirm) {
+          }
+        }
+      })
+    }
+  },
+  auto:function(){
+        var c0 = wx.getStorageSync('campus')
+    var b1 = wx.getStorageSync('build')
+    var c2 = wx.getStorageSync('center')
+    var r4 = wx.getStorageSync('room')
+    if (c0 != "" && b1 != "" && c2 != "" && r4 != "") {
+  wx.navigateTo({url:'../index/auto'})
+    }
+        else{
       wx.showModal({
         content: '未保存完整房间信息',
         showCancel: false,

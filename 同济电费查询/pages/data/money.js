@@ -30,10 +30,10 @@ Page({
     success: function(res){
     that.setData({
       result:res.data.money,
-      campusname: res.data.campusname,
-      buildname: res.data.buildname,
-      centername: res.data.centername,
-      roomname: res.data.roomname,
+      campusname: wx.getStorageSync('campusname'),
+      buildname: wx.getStorageSync('buildname'),
+      centername: wx.getStorageSync('centername'),
+      roomname: wx.getStorageSync('roomname'),
       time: res.data.time,
       loading:true
     })
@@ -48,6 +48,10 @@ Page({
   record: function () {
     wx.navigateTo({ url: '../data/record' })
   },
+  auto:function(){
+     wx.navigateTo({ url: '../index/auto' })
+  }
+  ,
   clear: function () {
     wx.setStorageSync("campus", "")
     wx.setStorageSync("build", "")

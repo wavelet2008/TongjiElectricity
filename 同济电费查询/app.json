@@ -9,7 +9,8 @@
     "pages/data/money",
     "pages/index/vote",
     "pages/data/tjservice",
-    "pages/data/record"
+    "pages/data/record",
+    "pages/index/auto"
   ],
   "window": {
     "backgroundTextStyle": "light",
