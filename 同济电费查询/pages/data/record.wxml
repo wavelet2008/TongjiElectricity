@@ -3,7 +3,7 @@
         <view class="page__title">充电记录查询</view>
     </view>
     <view class="page__bd">
-         <view class="weui-cells__title">选择日期</view>
+         <view class="weui-cells__title">选择日期(间隔不应超过一年)</view>
           <view class="weui-cells weui-cells_after-title">
           <view class="weui-cell weui-cell_input">
                 <view class="weui-cell__hd">
@@ -20,7 +20,7 @@
                     <view class="weui-label">结束日期</view>
                 </view>
                 <view class="weui-cell__bd">
-                    <picker mode="date" value="{{enddate}}" start="2015-09-01" end="2018-09-01" bindchange="bindEndDateChange">
+                    <picker mode="date" value="{{enddate}}" start="2017-09-01" end="2018-09-01" bindchange="bindEndDateChange">
                         <view class="weui-input">{{enddate}}</view>
                     </picker>
                 </view>
@@ -30,7 +30,10 @@
         <view class="weui-btn-area">
             <button class="weui-btn" type="primary" bindtap="clk">确定</button>
         </view>
-
+        <view hidden="{{loading}}"  class="weui-loadmore">
+            <view class="weui-loading"></view>
+            <view class="weui-loadmore__tips">正在查询</view>
+        </view>
         <view wx:for="{{result}}" class="weui-form-preview">
             <view class="weui-form-preview__hd">
                 <view class="weui-form-preview__item">
@@ -42,6 +45,12 @@
                  <view class="weui-form-preview__item">
                     <view class="weui-form-preview__label">充值时间</view>
                     <view class="weui-form-preview__value">{{item.time}}</view>
+                </view>
+            </view>
+                        <view class="weui-form-preview__bd">
+                 <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">充值账号</view>
+                    <view class="weui-form-preview__value">{{item.account}}</view>
                 </view>
             </view>
         </view>

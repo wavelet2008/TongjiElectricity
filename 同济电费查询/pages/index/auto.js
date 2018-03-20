@@ -60,7 +60,7 @@ Page({
     var  room=wx.getStorageSync('room')   
     var that=this
 wx.request({
-        url: 'https://www.tjservice.cn/status',
+  url: 'https://www.aikatsucn.cn/status',
         header: {
           'content-type': 'application/x-www-form-urlencoded'
         },
@@ -126,7 +126,7 @@ wx.request({
         loading: false
       })
       wx.request({
-        url: 'https://www.tjservice.cn/register',
+        url: 'https://www.aikatsucn.cn/register',
         header: {
           'content-type': 'application/x-www-form-urlencoded'
         },
@@ -174,7 +174,7 @@ wx.request({
         loading: false
       })
       wx.request({
-        url: 'https://www.tjservice.cn/delete',
+        url: 'https://www.aikatsucn.cn/delete',
         header: {
           'content-type': 'application/x-www-form-urlencoded'
         },

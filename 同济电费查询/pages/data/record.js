@@ -1,9 +1,10 @@
 // record.js
 Page({
   data: {
-    startdate: "2017-01-01",
-    enddate: "2017-12-01",
-    result:[]
+    startdate: "2017-09-01",
+    enddate: "2018-09-01",
+    result:[],
+    loading: true,
   },
 
   onLoad: function (options) {
@@ -27,7 +28,7 @@ Page({
       loading:false
     })
     wx.request({
-      url: 'https://www.tjservice.cn/record',
+      url: 'https://www.aikatsucn.cn/record',
       header: {
         'content-type': 'application/x-www-form-urlencoded'
       },

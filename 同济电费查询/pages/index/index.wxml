@@ -33,12 +33,12 @@
                 </view>
             </view>         
            </view>
-        <view class="button-sp-area">
-           <button class="weui-btn" type="primary" bindtap="auto"  plain="true">自动预警</button>         
-        </view>
+        <!--<view class="button-sp-area">
+           <button hidden='{{!preview}}' class="weui-btn" type="primary" bindtap="auto"  plain="true">电费充值</button>         
+        </view>-->
  
         <view class="weui-footer weui-footer_fixed-bottom">
          <navigator hidden="{{hide}}" url="../index/vote" class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">打赏开发者 </navigator>
-            <view class="weui-footer__text">Copyright © 2016-2017 tjservice.cn</view>
+            <view class="weui-footer__text">Copyright © 2016-2018 tjservice.cn</view>
         </view>
 </view>

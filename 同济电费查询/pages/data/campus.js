@@ -5,12 +5,16 @@ Page({
     result:[],
     campus:"",
     build:"",
+    loading: false,
     name:""
   },
   onLoad:function(options){
     var that=this
+    that.setData({
+      loading: true,
+    })
     wx.request({
-      url: 'https://www.tjservice.cn/build',
+    url: 'https://www.aikatsucn.cn/build',
     header: {
       'content-type': 'application/x-www-form-urlencoded'
     },
@@ -19,9 +23,11 @@ Page({
     },
     method: 'POST',
     success: function(res){
-    that.setData({result:res.data,
-    build: res.data[0].id,
-    name: res.data[0].name
+    that.setData({
+      loading: false,
+      result:res.data,
+      build: res.data[0].id,
+      name: res.data[0].name
     })
     }
   })
@@ -30,7 +36,7 @@ Page({
     var build = this.data.build
         var name=this.data.name
     wx.showModal({
-      content: '所选校区：' + this.data.name,
+      content: '所选楼栋：' + this.data.name,
       showCancel: true,
       success: function (res) {
         if (res.confirm) {
@@ -45,8 +51,11 @@ Page({
   ,
   refresh: function () {
     var that = this
+    that.setData({
+      loading: true,
+    })
     wx.request({
-      url: 'https://www.tjservice.cn/build',
+      url: 'https://www.aikatsucn.cn/build',
       header: {
         'content-type': 'application/x-www-form-urlencoded'
       },
@@ -55,7 +64,10 @@ Page({
       },
       method: 'POST',
       success: function (res) {
-        that.setData({ result: res.data })
+        that.setData({ 
+          loading: false,
+          result: res.data 
+          })
       }
     })
   }

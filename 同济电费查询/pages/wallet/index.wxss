@@ -1,0 +1,30 @@
+/**index.wxss**/
+.button-sp-area{
+    margin: 0 auto;
+    width: 40%;
+}
+.button-text-area{
+    margin: 0 auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+    text-align: center;
+    font: medium;
+}
+.weui-footer{
+    margin-bottom: 10px;
+}
+.weui-footer_fixed-bottom{
+    margin-bottom: 0;
+}
+.contact_view{
+  width:30px;
+  height: 30px;
+  background-color: #f60;
+  text-align: center;
+  align-items: center;
+  padding-top: 10px;
+  border-radius: 20px;
+  line-height: 42px;
+  padding: 2px;
+}

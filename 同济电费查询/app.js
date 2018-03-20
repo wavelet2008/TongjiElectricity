@@ -1,10 +1,6 @@
 //app.js
 App({
   onLaunch: function () {
-    //调用API从本地缓存中获取数据
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
     wx.login({
       //获取code
       success: function (res) {
@@ -12,7 +8,7 @@ App({
         console.log(code);
         var appId = 'wx9fd8462d33b5c378';
         var secret = 'e3bbddbbf88dac1e2f743f165eaeb364';
-        wx.request({
+       /* wx.request({
           url: 'https://api.weixin.qq.com/sns/jscode2session?appid=' + appId + '&secret=' + secret + '&js_code=' + code + '&        grant_type=authorization_code',
           data: {},
           header: {
@@ -22,7 +18,7 @@ App({
             var openid = res.data.openid //返回openid
             wx.setStorageSync('id', openid)
           }
-        })
+        })*/
       }
     })
   },
@@ -47,5 +43,4 @@ App({
   globalData:{
     userInfo:null
   }
-
 })

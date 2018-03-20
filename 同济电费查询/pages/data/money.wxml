@@ -1,27 +1,32 @@
 <!--pages/data/money.wxml-->
 <view class="page">
     <view class="page__hd">
-             <view class="weui-cells">
+       <view class="weui-cells">
           <view class="weui-cell weui-cell_switch">
+            <view class="weui-cell__ft" style='font-size:24rpx'>
+              剩余金额更新频率较慢，请以充值记录能否查询到为准(无延迟)
+            </view>
+          </view>  
+        <view class="weui-cell weui-cell_switch">
           <view class="weui-cell__bd">联系开发者</view>
                 <view class="weui-cell__ft">
                     <view class="contact_view">
-           <contact-button type="default-light" size="20" session-from="weapp"></contact-button>
-           </view>
+                        <contact-button type="default-light" size="20" session-from="weapp"></contact-button>
+                    </view>
                 </view>
-            </view>         
-           </view>
+          </view>         
+        </view>       
     </view>
     <view class="page__bd">
         <view hidden="{{loading}}"  class="weui-loadmore">
             <view class="weui-loading"></view>
-            <view class="weui-loadmore__tips">正在加载</view>
+            <view class="weui-loadmore__tips">正在查询</view>
         </view>
         <view class="weui-form-preview">
             <view class="weui-form-preview__hd">
                 <view hidden="{{!loading}}" class="weui-form-preview__item">
                     <view class="weui-form-preview__label">剩余金额</view>
-                    <view class="weui-form-preview__value_in-hd">¥{{result}}</view>
+                    <view style='font-size:24px;'  class="weui-form-preview__value_in-hd">{{result}}</view>
                 </view>
             </view>
             <view class="weui-form-preview__bd">
@@ -41,25 +46,31 @@
                     <view class="weui-form-preview__label">房间</view>
                     <view class="weui-form-preview__value">{{roomname}}</view>
                 </view>
-                 <view class="weui-form-preview__item">
+                <!-- <view class="weui-form-preview__item">
                     <view class="weui-form-preview__label">更新时间</view>
                     <view class="weui-form-preview__value">{{time}}</view>
-                </view>
+                </view>-->
             </view>
             <view class="weui-form-preview__ft">
-                <navigator url="search" class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">重选房间                 </navigator>
+                <navigator url="search" class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">重选房间</navigator>
             </view>
- 
-        </view>
- 
+        </view> 
         <view class="button-sp-area">
-            <button class="weui-btn" type="default"  bindtap="auto" plain="true">自动预警</button>
-            <button class="weui-btn" type="primary" bindtap="record"  plain="true">充值记录</button>      
-        </view>
-                     
+            <!--<button class="weui-btn" type="default"  bindtap="auto" plain="true">自动预警</button>-->
+            <button class="weui-btn" type="primary" bindtap="record"  plain="true">充值记录</button> 
+             <!--<button class="weui-btn" type="primary" bindtap="phone"  plain="true">联系电控</button> -->
+        </view> 
+        <navigator hidden="{{hide}}" bindtap='phone' style='margin-top:10px;' class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">电费一直没充上?</navigator>    
+            <view hidden='{{!fail}}' class="weui-cells">
+              <view class="weui-cell weui-cell_switch">
+                <view class="weui-cell__ft" style='font-size:24rpx'>
+                    {{tip}}
+                </view>
+              </view> 
+            </view>  
             <view class="weui-footer weui-footer_fixed-bottom">
           <navigator url="tjservice" class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">打赏开发者 </navigator>
-            <view class="weui-footer__text">Copyright © 2016-2017 tjservice.cn</view>
+            <view class="weui-footer__text">Copyright © 2016-2018 tjservice.cn</view>
         </view>
  </view>
   </view>

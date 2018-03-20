@@ -10,7 +10,14 @@
     "pages/index/vote",
     "pages/data/tjservice",
     "pages/data/record",
-    "pages/index/auto"
+    "pages/index/auto",
+    "pages/wallet/login",
+    "pages/wallet/campus",
+    "pages/wallet/xiaoqu",
+    "pages/wallet/build",
+    "pages/wallet/room",
+    "pages/wallet/index",
+    "pages/index/test"
   ],
   "window": {
     "backgroundTextStyle": "light",

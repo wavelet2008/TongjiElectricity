@@ -1,0 +1,64 @@
+<!--pages/wallet/index.wxml-->
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">电费充值beta</view>
+        <view class="page__desc">请先在一卡通wap端/同心云一卡通轻应用绑定银行卡，再添加账号，登录验证成功后可添加房间</view>
+    </view>
+    <view class="page__bd page__bd_spacing">
+        <view class="button-sp-area">
+            <button class="weui-btn" type="primary"  bindtap="clk" plain="true">账号管理</button>
+       </view>
+       <view class="button-text-area">
+          <view style="height: 20px;font-size: 20px">{{account}}</view>
+       </view>
+    </view>
+        <view hidden='{{hide}}' class="weui-form-preview">
+            <view class="weui-form-preview__hd">
+                <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">房间</view>
+                    <view class="weui-form-preview__value_in-hd">{{room}}</view>
+                </view>
+            </view>
+            <view class="weui-form-preview__bd">
+                <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">校区</view>
+                    <view class="weui-form-preview__value">{{campusname}}</view>
+                </view>
+                <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">楼栋</view>
+                    <view class="weui-form-preview__value">{{buildname}}</view>
+                </view>
+            </view>
+        </view> 
+                <view class="weui-btn-area">
+            <picker bindchange="pickerchange" value="{{num}}" range="{{array}}">
+                <view class="button-sp-area">
+                <button type="primary">金额选择</button>
+                </view>
+            </picker>                     
+        </view>
+        <view hidden="{{loading}}"  class="weui-loadmore">
+            <view class="weui-loading"></view>
+            <view class="weui-loadmore__tips">正在操作</view>
+        </view>
+        <view hidden="{{!loading}}" class="weui-btn-area">
+        <view class="button-sp-area">
+            <button class="weui-btn" type="warn" bindtap="dopay">充值</button>
+            <button class="weui-btn" type="default" bindtap="rechoose">重选房间</button>
+        </view>
+        </view>
+      <!--<view class="weui-cell weui-cell_switch">
+      <view class="weui-cell__bd">联系开发者</view>
+            <view class="weui-cell__ft">
+                <view class="contact_view">
+        <contact-button type="default-light" size="20" session-from="weapp"></contact-button>
+        </view>
+            </view>
+        </view>-->         
+
+
+
+        <view class="weui-footer weui-footer_fixed-bottom">
+            <view class="weui-footer__text">Copyright © 2016-2018 tjservice.cn</view>
+        </view>
+</view>

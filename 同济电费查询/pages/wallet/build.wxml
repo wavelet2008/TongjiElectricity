@@ -1,4 +1,4 @@
-<!--pages/data/center.wxml-->
+<!--pages/data/build.wxml-->
 <view>
     <view class="page__hd">
         <view class="page__title">{{title}}</view>
@@ -16,9 +16,5 @@
       <button class="weui-btn mini-btn" type="primary" bindtap="clk" size="mini">确定</button>
       <button class="weui-btn mini-btn" type="default" bindtap="refresh" size="mini" >刷新</button>
       <button class="weui-btn mini-btn" type="warn" bindtap="cancel"  size="mini">取消</button>
-  </view>
-    <view hidden="{{!loading}}"  class="weui-loadmore">
-      <view class="weui-loading"></view>
-      <view class="weui-loadmore__tips">正在查询</view>
   </view>
 </view>

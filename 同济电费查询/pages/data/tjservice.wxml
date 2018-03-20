@@ -6,7 +6,8 @@
     <image src="https://www.tjservice.cn/author" mode="aspectFit" bindtap="preview"></image>
     <view class="button-text-area">点击→长按保存图片↑</view>
         <view class="weui-footer weui-footer_fixed-bottom">
-            <view class="weui-footer__text">Copyright © 2016-2017 tjservice.cn</view>
+          <navigator url="../wallet/index" class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">新功能实验室</navigator>
+            <view class="weui-footer__text">Copyright © 2016-2018 tjservice.cn</view>
         </view>
      </view>
 </view>

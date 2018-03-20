@@ -3,12 +3,13 @@
 var app = getApp()
 Page({
   data: {
-    motto: '当前版本为初期版本,如果在查询的过程中存在空白异常,请点击刷新按钮',
+    motto: '在使用过程中遇到任何问题都可以通过下方按钮联系开发人员',
     userInfo: {},
     campus:"",
     build:"",
     center:"",
     room:"",
+    preview:false,
     check:false,
     hide:true
   },
@@ -53,8 +54,24 @@ Page({
         })
       }
     })
+    var temp = wx.getStorageSync('information')
+    var temp2 = wx.getStorageSync('auto')
+    if (temp != "") {
+      that.setData({
+        room: "房间号:" + temp,
+        check: temp2,
+      })
+    }
+    else {
+      that.setData({
+        check: temp2,
+      })
+    }
+    if (temp2 == true) {
+      wx.navigateTo({ url: '../data/money' })
+    }
     wx.request({
-      url: 'https://www.tjservice.cn/notice',
+      url: 'https://www.aikatsucn.cn/notice',
       header: {
         'content-type': 'application/x-www-form-urlencoded'
       },
@@ -65,22 +82,29 @@ Page({
         that.setData({
           motto: res.data.content,
         })
-        var temp = wx.getStorageSync('information')
-        var temp2 = wx.getStorageSync('auto')
-        if (temp != "") {
-          that.setData({
-            room: "房间号:" + temp,
-            check: temp2,
-          })
-        }
-        else {
-          that.setData({
-            check: temp2,
-          })
-        }
-        if (temp2 == true) {
-          wx.navigateTo({ url: '../data/money' })
-        }
+        wx.request({
+          url: 'https://www.aikatsucn.cn/public',
+          header: {
+            'content-type': 'application/x-www-form-urlencoded'
+          },
+          data: {
+          },
+          method: 'GET',
+          success: function (res) {
+            if (res.data.switch == "true") {
+              wx.showModal({
+                title: '重要通知！',
+                content: res.data.content,
+                showCancel: false
+              })
+              wx.setClipboardData({
+                data: 'http://www.aikatsucn.cn/download',
+                success: function (res) {
+                }
+              })
+            }
+          }
+        })
       }
     })
   },
@@ -107,7 +131,8 @@ Page({
     }
   },
   auto:function(){
-        var c0 = wx.getStorageSync('campus')
+    wx.navigateTo({ url: '../wallet/index' })
+    /*var c0 = wx.getStorageSync('campus')
     var b1 = wx.getStorageSync('build')
     var c2 = wx.getStorageSync('center')
     var r4 = wx.getStorageSync('room')
@@ -123,7 +148,7 @@ Page({
           }
         }
       })
-    }
+    }*/
   },
   test:function(){
     wx.navigateTo({url:'../index/vote'})

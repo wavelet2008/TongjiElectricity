@@ -1,4 +1,4 @@
-// tjservice.js
+// pages/index/test.js
 Page({
 
   /**
@@ -12,13 +12,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-      wx.setStorageSync("preview", "true")
+  
   },
-  preview: function (e) {
-    wx.previewImage({
-      urls: ['https://www.aikatsucn.cn/author'],
-    })
-  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

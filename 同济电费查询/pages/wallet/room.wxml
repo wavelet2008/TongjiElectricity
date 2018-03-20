@@ -1,0 +1,17 @@
+<!--pages/wallet/room.wxml-->
+<view>
+    <view class="page__hd">
+        <view class="page__title">房间号填写</view>
+    </view>
+    <view class="container">  
+      <view class="usermotto">  
+        <text class="user-motto">{{motto}}</text>  
+        <view style='font-size:12px;color:deepskyblue;'>房间号</view>
+        <input class='textblock' type="text" bindinput="RoomInput"/>  
+        <view class="button-sp-area">
+          <button class="weui-btn" type="primary" bindtap="Login">添加</button>  
+        </view>
+      </view>  
+    </view> 
+</view>
+ 

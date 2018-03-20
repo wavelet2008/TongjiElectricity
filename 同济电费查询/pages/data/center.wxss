@@ -5,6 +5,21 @@
     width: 90%;
 }
 .mini-btn{
-    margin-right: 6px;
-    width: 31%;
+    font-size: 14px;
+    margin: 2px;
+    width: 50%;
+}
+.container{
+  margin-top: 50px; 
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.center{
+  width: 100%;
+  line-height:50px;
+  font-size:15px;
+  display: flex;
+  justify-content: center;
 }

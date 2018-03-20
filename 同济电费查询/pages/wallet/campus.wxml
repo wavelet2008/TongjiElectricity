@@ -1,9 +1,9 @@
-<!--pages/data/center.wxml-->
+<!--pages/wallet/campus.wxml-->
 <view>
     <view class="page__hd">
         <view class="page__title">{{title}}</view>
     </view>
-  <picker-view style="width: 100%; height: 250px;" value="{{value}}" bindchange="bindChange">
+  <picker-view style="width: 100%; height: 250px;Margin-botton=50px;" value="{{value}}" bindchange="bindChange">
     <picker-view-column stype="width:0%;">
     </picker-view-column>
     <picker-view-column>
@@ -16,9 +16,5 @@
       <button class="weui-btn mini-btn" type="primary" bindtap="clk" size="mini">确定</button>
       <button class="weui-btn mini-btn" type="default" bindtap="refresh" size="mini" >刷新</button>
       <button class="weui-btn mini-btn" type="warn" bindtap="cancel"  size="mini">取消</button>
-  </view>
-    <view hidden="{{!loading}}"  class="weui-loadmore">
-      <view class="weui-loading"></view>
-      <view class="weui-loadmore__tips">正在查询</view>
   </view>
 </view>

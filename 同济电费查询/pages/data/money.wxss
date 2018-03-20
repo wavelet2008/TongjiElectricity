@@ -4,7 +4,7 @@
 }
 .button-sp-area{
     margin: 0 auto;
-    width: 35%;
+    width: 40%;
 }
 .page__hd {
     padding: 0px;

@@ -1,0 +1,18 @@
+<!--pages/wallet/login.wxml-->
+<view class="container">  
+  <view class="usermotto">  
+    <text class="user-motto">{{motto}}</text>  
+    <view hidden="{{loading}}"  class="weui-loadmore">
+        <view class="weui-loading"></view>
+        <view class="weui-loadmore__tips">正在操作</view>
+    </view>
+    <view style='font-size:12px;color:deepskyblue;'>一卡通账号</view>
+    <input value='{{account}}' class='textblock' type="text" bindinput="NameInput"/>  
+     <view style='font-size:12px;color:deepskyblue;'>密码</view>
+    <input value='{{password}}' class='textblock' type="text" bindinput="PasswordInput" password="true"/>  
+    <view style='font-size:12px;color:deepskyblue;'>银行密码</view>
+    <input value='{{Bankpwd}}' class='textblock' type="text" bindinput="BankpwdInput" password="true"/>  
+      <button class="weui-btn" type="primary" bindtap="Login">登录</button>  
+      <button class="weui-btn" type="warn" bindtap="Logout">注销</button>  
+  </view>  
+</view>  

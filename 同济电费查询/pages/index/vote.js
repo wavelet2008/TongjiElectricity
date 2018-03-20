@@ -30,7 +30,7 @@ data:{
     var that=this
     var tip = this.data.tip
     wx.request({
-      url: 'https://www.tjservice.cn/notice',
+      url: 'https://www.aikatsucn.cn/notice',
     header: {
       'content-type': 'application/x-www-form-urlencoded'
     },
