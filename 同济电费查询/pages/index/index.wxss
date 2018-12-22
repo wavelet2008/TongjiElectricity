@@ -21,11 +21,28 @@
 .contact_view{
   width:30px;
   height: 30px;
-  background-color: #f60;
+  background-color: green;
   text-align: center;
   align-items: center;
   padding-top: 10px;
   border-radius: 20px;
   line-height: 42px;
   padding: 2px;
+}
+.iphoneX{
+  margin-bottom: 88rpx;
+}
+.swiper_container {
+  height: 50rpx;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+.swiper_item {
+  margin-top: 10rpx;
+  font-size: 28rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: 2px;
 }

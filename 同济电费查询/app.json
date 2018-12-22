@@ -2,10 +2,6 @@
   "pages": [
     "pages/index/index",
     "pages/logs/logs",
-    "pages/data/search",
-    "pages/data/campus",
-    "pages/data/build",
-    "pages/data/center",
     "pages/data/money",
     "pages/index/vote",
     "pages/data/tjservice",
@@ -17,7 +13,11 @@
     "pages/wallet/build",
     "pages/wallet/room",
     "pages/wallet/index",
-    "pages/index/test"
+    "pages/index/test",
+    "pages/data/author",
+    "pages/data/msg",
+    "pages/data/register",
+    "pages/data/used"
   ],
   "window": {
     "backgroundTextStyle": "light",

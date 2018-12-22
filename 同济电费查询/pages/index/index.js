@@ -1,156 +1,190 @@
 //index.js
-//获取应用实例
 var app = getApp()
 Page({
   data: {
-    motto: '在使用过程中遇到任何问题都可以通过下方按钮联系开发人员',
+    roominfor:{},
     userInfo: {},
-    campus:"",
-    build:"",
-    center:"",
-    room:"",
+    hide_preview:false,
+    ipx: false,
     preview:false,
     check:false,
     hide:true
   },
   listenerSwitch: function (e) {
-    var c0 = wx.getStorageSync('campus')
-    var b1 = wx.getStorageSync('build')
-    var c2 = wx.getStorageSync('center')
-    var r4 = wx.getStorageSync('room')
-    if (c0 != "" && b1 != "" && c2 != "" && r4 != "") {
+    var roominfor = app.globalData.roominfor
+    if (JSON.stringify(roominfor) != "{}") {
       wx.setStorageSync("auto", e.detail.value)
     }
     else {
       wx.showModal({
-        content: '未保存完整房间信息',
-        showCancel: false,
-        success: function (res) {
-          if (res.confirm) {
-          }
-        }
+        content: '未选择房间',
+        showCancel: false
       })
       this.setData({
         check: false
       })
     }
   },
-    getPhoneNumber: function(e) { 
-        console.log(e.detail.errMsg) 
-        console.log(e.detail.iv) 
-        console.log   (e.detail.encryptedData) 
-    } 
-    ,
   onLoad: function () {
+    const updateManager = wx.getUpdateManager()
+    updateManager.onUpdateReady(function () {
+      wx.showModal({
+        title: '更新提示',
+        content: '新版本已经准备好，是否重启应用？',
+        success: function (res) {
+          if (res.confirm) {
+            updateManager.applyUpdate()
+          }
+        }
+      })
+    })
     var that = this
-    app.getUserInfo(
-      function (userInfo) {
+    app.getUserInfo(function (userInfo) {
       that.setData({
         userInfo: userInfo
       })
-      if (userInfo.nickName == "畅") {
-        that.setData({
-          hide: false
-        })
-      }
     })
-    var temp = wx.getStorageSync('information')
-    var temp2 = wx.getStorageSync('auto')
-    if (temp != "") {
+    wx.getSystemInfo({
+      success: function (res) {
+        if (res.model == "iPhone X") {
+          that.setData({
+            ipx: true
+          })
+        }
+      },
+    })
+    that.setData({
+      msglist: [
+        { title: "当前电费查询服务状态为:可用" },
+        { title: "您可以百度[同济能源管理中心]找到官方查询网页" },
+        { title: "当使用出现故障时，请联系开发者报告错误" },
+      ]
+    });
+    var roominfor = app.globalData.roominfor
+    if (JSON.stringify(roominfor) != "{}"){
       that.setData({
-        room: "房间号:" + temp,
-        check: temp2,
+        roominfor: roominfor,
       })
     }
-    else {
+    else{
       that.setData({
-        check: temp2,
+        hide_preview: true
+      })
+      wx.showToast({
+        title: '请先选择房间',
+        icon:'none',
+        duration:3000
       })
     }
-    if (temp2 == true) {
+    if (wx.getStorageSync('auto')== true) {
       wx.navigateTo({ url: '../data/money' })
+      that.setData({
+        check:true
+      })
     }
     wx.request({
-      url: 'https://www.aikatsucn.cn/notice',
+      url: 'https://www.liuchangfreeman.xyz/public',
       header: {
         'content-type': 'application/x-www-form-urlencoded'
       },
-      data: {
-      },
       method: 'GET',
       success: function (res) {
-        that.setData({
-          motto: res.data.content,
-        })
-        wx.request({
-          url: 'https://www.aikatsucn.cn/public',
-          header: {
-            'content-type': 'application/x-www-form-urlencoded'
-          },
-          data: {
-          },
-          method: 'GET',
-          success: function (res) {
-            if (res.data.switch == "true") {
-              wx.showModal({
-                title: '重要通知！',
-                content: res.data.content,
-                showCancel: false
-              })
-              wx.setClipboardData({
-                data: 'http://www.aikatsucn.cn/download',
-                success: function (res) {
-                }
-              })
-            }
+        if (res.data.switch == "true") {
+          var id = res.data.id
+          console.log(id)
+          if (wx.getStorageSync("hide_id") >= id) {
+            console.log(wx.getStorageSync("hide_id"))
+            return
           }
-        })
+          wx.showModal({
+            title: '来自开发者的通知',
+            content: res.data.content,
+            showCancel: true,
+            cancelText: "不再提醒",
+            success: function (res) {
+              if (res.cancel) {
+                wx.setStorageSync("hide_id", id)
+              }
+            }
+          })
+        }
+        if (res.data.copycode == "true") {
+          wx.setClipboardData({
+            data: res.data.code,
+          })
+        }
       }
+    })
+    wx.request({
+      url: 'https://www.liuchangfreeman.xyz/status',
+      method: 'GET',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        if (res.data.result == 'false') {
+          that.setData({
+            msglist: [
+              { title: "当前电费查询服务状态为:不可用(维修中)" },
+              { title: "您可以百度[同济能源管理中心]找到官方查询网页" },
+              { title: "当使用出现故障时，请联系开发者报告错误" },
+            ]
+          });
+        }
+      },
+      fail: function (res) {
+        that.setData({
+          msglist: [
+            { title: "当前电费查询服务状态为:不可用(维修中)" },
+            { title: "您可以百度[同济能源管理中心]找到官方查询网页" },
+            { title: "当使用出现故障时，请联系开发者报告错误" },
+          ]
+        });
+      },
     })
   },
   clk:function(){
-    wx.navigateTo({url:'../data/search'})
+    wx.reLaunch({
+      url: '../data/register',
+    })
   },
   search:function(){
-    var c0 = wx.getStorageSync('campus')
-    var b1 = wx.getStorageSync('build')
-    var c2 = wx.getStorageSync('center')
-    var r4 = wx.getStorageSync('room')
-    if (c0 != "" && b1 != "" && c2 != "" && r4 != "") {
+    var roominfor = app.globalData.roominfor
+    if (JSON.stringify(roominfor) != "{}") {
       wx.navigateTo({ url: '../data/money' })
     }
     else{
       wx.showModal({
-        content: '未保存完整房间信息',
-        showCancel: false,
-        success: function (res) {
-          if (res.confirm) {
-          }
-        }
+        content: '未选择房间',
+        showCancel: false
       })
     }
   },
   auto:function(){
     wx.navigateTo({ url: '../wallet/index' })
-    /*var c0 = wx.getStorageSync('campus')
-    var b1 = wx.getStorageSync('build')
-    var c2 = wx.getStorageSync('center')
-    var r4 = wx.getStorageSync('room')
-    if (c0 != "" && b1 != "" && c2 != "" && r4 != "") {
-  wx.navigateTo({url:'../index/auto'})
-    }
-        else{
-      wx.showModal({
-        content: '未保存完整房间信息',
-        showCancel: false,
-        success: function (res) {
-          if (res.confirm) {
-          }
-        }
-      })
-    }*/
   },
-  test:function(){
-    wx.navigateTo({url:'../index/vote'})
-  }
+  record: function () {
+    var roominfor = app.globalData.roominfor
+    if (JSON.stringify(roominfor) != "{}") {
+      wx.navigateTo({ url: '../data/record' })
+    }
+    else {
+      wx.showModal({
+        content: '未选择房间',
+        showCancel: false
+      })
+    }
+  },
+  used: function () {
+    var roominfor = app.globalData.roominfor
+    if (JSON.stringify(roominfor) != "{}") {
+      wx.navigateTo({ url: '../data/used' })
+    }
+    else {
+      wx.showModal({
+        content: '未选择房间',
+        showCancel: false
+      })
+    }
+  },
 })

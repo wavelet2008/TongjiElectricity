@@ -1,15 +1,15 @@
 // record.js
-var app=getApp()
+var app = getApp()
 Page({
   data: {
-    roominfor:{},
+    roominfor: {},
     startdate: "2017-09-01",
     enddate: "2018-09-01",
-    result:[],
+    result: [],
     loading: true,
-    cookie:"",
-    current:1,
-    maxpage:1
+    cookie: "",
+    current: 1,
+    maxpage: 1
   },
 
   onLoad: function (options) {
@@ -17,8 +17,8 @@ Page({
     var last = this.getNowFormatDate(1)
     this.setData({
       enddate: now,
-      startdate:last,
-      roominfor:app.globalData.roominfor
+      startdate: last,
+      roominfor: app.globalData.roominfor
     })
   },
   bindStartDateChange: function (e) {
@@ -34,7 +34,7 @@ Page({
   getNowFormatDate: function (offset) {
     var date = new Date();
     var seperator1 = "-";
-    var year = date.getFullYear()-offset;
+    var year = date.getFullYear() - offset;
     var month = date.getMonth() + 1;
     var strDate = date.getDate();
     if (month >= 1 && month <= 9) {
@@ -51,10 +51,10 @@ Page({
     var start = this.data.startdate
     var end = this.data.enddate
     this.setData({
-      loading:false
+      loading: false
     })
     wx.request({
-      url: 'https://www.liuchangfreeman.xyz/record_v2',
+      url: 'https://www.liuchangfreeman.xyz/used',
       header: {
         'content-type': 'application/x-www-form-urlencoded'
       },
@@ -71,9 +71,9 @@ Page({
       success: function (res) {
         that.setData({
           result: res.data.data,
-          cookie:res.data.cookie,
-          maxpage:res.data.pages,
-          loading:true
+          cookie: res.data.cookie,
+          maxpage: res.data.pages,
+          loading: true
         })
       }
     })
@@ -82,13 +82,13 @@ Page({
     var that = this
     var start = this.data.startdate
     var end = this.data.enddate
-    var result=this.data.result
-    if(this.data.current<this.data.maxpage){
+    var result = this.data.result
+    if (this.data.current < this.data.maxpage) {
       this.setData({
         loading: false
       })
       wx.request({
-        url: 'https://www.liuchangfreeman.xyz/record_v2',
+        url: 'https://www.liuchangfreeman.xyz/used',
         header: {
           'content-type': 'application/x-www-form-urlencoded'
         },
@@ -98,7 +98,7 @@ Page({
         },
         method: 'POST',
         success: function (res) {
-          for(var i=0;i<res.data.data.length;i++){
+          for (var i = 0; i < res.data.data.length; i++) {
             result.push(res.data.data[i])
           }
           that.setData({

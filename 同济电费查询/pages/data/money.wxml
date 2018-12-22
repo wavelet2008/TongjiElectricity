@@ -1,78 +1,102 @@
 <!--pages/data/money.wxml-->
 <view class="page">
-    <view class="page__hd">
-       <view class="weui-cells">
-          <view class="weui-cell weui-cell_switch">
-            <view class="weui-cell__ft" style='font-size:24rpx'>
-              剩余金额更新频率较慢，请以充值记录能否查询到为准(无延迟)
-            </view>
-          </view>  
-        <view class="weui-cell weui-cell_switch">
-          <view class="weui-cell__bd">联系开发者</view>
-                <view class="weui-cell__ft">
-                    <view class="contact_view">
-                        <contact-button type="default-light" size="20" session-from="weapp"></contact-button>
-                    </view>
-                </view>
-          </view>         
-        </view>       
-    </view>
-    <view class="page__bd">
-        <view hidden="{{loading}}"  class="weui-loadmore">
-            <view class="weui-loading"></view>
-            <view class="weui-loadmore__tips">正在查询</view>
+  <view class="page__hd">
+    <view class="weui-cells">
+      <swiper class="swiper_container" vertical="true" autoplay="true" circular="true" interval="2500">
+        <block wx:for="{{msglist}}">
+          <!--<navigator url="/pages/data/msg?title={{item.url}}" open-type="navigate">-->
+          <swiper-item>
+            <view class="swiper_item">{{item.title}}</view>
+          </swiper-item>
+          <!--</navigator>-->
+        </block>
+      </swiper>
+      <view class="weui-cell weui-cell_switch">
+        <view class="weui-cell__bd">联系开发者</view>
+        <view class="weui-cell__ft">
+          <view class="contact_view">
+            <contact-button type="default-light" session-from='{"nickname":"{{userInfo.nickname}}","avatarUrl":"{{userInfo.avatarUrl}}"}' size="20" session-from="weapp"></contact-button>
+          </view>
         </view>
-        <view class="weui-form-preview">
-            <view class="weui-form-preview__hd">
-                <view hidden="{{!loading}}" class="weui-form-preview__item">
-                    <view class="weui-form-preview__label">剩余金额</view>
-                    <view style='font-size:24px;'  class="weui-form-preview__value_in-hd">{{result}}</view>
-                </view>
-            </view>
-            <view class="weui-form-preview__bd">
-                <view class="weui-form-preview__item">
-                    <view class="weui-form-preview__label">校区</view>
-                    <view class="weui-form-preview__value">{{campusname}}</view>
-                </view>
-                <view class="weui-form-preview__item">
-                    <view class="weui-form-preview__label">楼栋</view>
-                    <view class="weui-form-preview__value">{{buildname}}</view>
-                </view>
-                <view class="weui-form-preview__item">
-                    <view class="weui-form-preview__label">楼层</view>
-                    <view class="weui-form-preview__value">{{centername}}</view>
-                </view>
-               <view class="weui-form-preview__item">
-                    <view class="weui-form-preview__label">房间</view>
-                    <view class="weui-form-preview__value">{{roomname}}</view>
-                </view>
-                <!-- <view class="weui-form-preview__item">
-                    <view class="weui-form-preview__label">更新时间</view>
-                    <view class="weui-form-preview__value">{{time}}</view>
-                </view>-->
-            </view>
-            <view class="weui-form-preview__ft">
-                <navigator url="search" class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">重选房间</navigator>
-            </view>
-        </view> 
-        <view class="button-sp-area">
-            <!--<button class="weui-btn" type="default"  bindtap="auto" plain="true">自动预警</button>-->
-            <button class="weui-btn" type="primary" bindtap="record"  plain="true">充值记录</button> 
-             <!--<button class="weui-btn" type="primary" bindtap="phone"  plain="true">联系电控</button> -->
-        </view> 
-        <navigator hidden="{{hide}}" bindtap='phone' style='margin-top:10px;' class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">电费一直没充上?</navigator>    
-            <view hidden='{{!fail}}' class="weui-cells">
-              <view class="weui-cell weui-cell_switch">
-                <view class="weui-cell__ft" style='font-size:24rpx'>
-                    {{tip}}
-                </view>
-              </view> 
-            </view>  
-            <view class="weui-footer weui-footer_fixed-bottom">
+      </view>
+    </view>
+  </view>
+  <view class="page__bd">
+    <view hidden="{{loading}}" class="weui-loadmore">
+      <view class="weui-loading"></view>
+      <view class="weui-loadmore__tips">正在查询</view>
+    </view>
+    <view class="weui-form-preview">
+      <view class="weui-form-preview__hd">
+        <view hidden="{{!loading}}" class="weui-form-preview__item">
+          <view class="weui-form-preview__label">剩余金额</view>
+          <view style='font-size:24px;' class="weui-form-preview__value_in-hd">{{result}}</view>
+        </view>
+      </view>
+      <view class="weui-form-preview__bd">
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">校区</view>
+          <view class="weui-form-preview__value">{{campusname}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">楼栋</view>
+          <view class="weui-form-preview__value">{{buildname}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">楼层</view>
+          <view class="weui-form-preview__value">{{centername}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">房间</view>
+          <view class="weui-form-preview__value">{{roomname}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="button-container">
+      <form bindsubmit="form" report-submit="true">
+        <button form-type='submit' style='font-size:34rpx' class="weui-btn" type="default" bindtap="notice" plain="true">余额通知</button>
+      </form>
+      <!--<view>
+        <button style='font-size:34rpx' class="weui-btn" type="primary" bindtap="record" plain="true">充值记录</button>
+      </view>-->
+      <view>
+        <button style='font-size:34rpx' class="weui-btn" type="primary" bindtap="back" plain="true">返回主页</button>
+      </view>
+            <view>
+        <button style='font-size:34rpx' class="weui-btn" type="default" bindtap='phone' plain="true">联系电话</button>
+      </view>
+    </view>
+        <view class="weui-cells" style='margin-top:3px;'>
+      <view class="weui-cell weui-cell_switch">
+        <view class="weui-cell__ft" style='font-size:31rpx'>
+          您可以使用[同心云]的[一卡通]/[校园钱包]进行缴费
+        </view>
+      </view>
+            <view class="weui-cell weui-cell_switch">
+        <view class="weui-cell__ft" style='font-size:31rpx;color:red;'>
+          余额并不是即时更新，请以充值记录是否到账为准
+        </view>
+      </view>
+    </view>
+
+    <!--<navigator hidden="{{hide}}" bindtap='phone' class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">联系电控负责人</navigator>-->
+    <view hidden='{{!fail}}' class="weui-cells" style='margin-top:3px;'>
+      <view class="weui-cell weui-cell_switch">
+        <view class="weui-cell__ft" style='font-size:24rpx'>
+          {{tip}}
+        </view>
+      </view>
+    </view>
+
+    <view class="weui-footer weui-footer_fixed-bottom">
+      <view class="{{ipx?'iphoneX':'ad_container'}}">
+        <ad unit-id="adunit-e2e275bd733e13a5"></ad>
+      </view>
+      <view hidden='{{mini}}' class="weui-footer__text">Copyright © 2016-2018 liuchangfreeman.xyz</view>
+    </view>
+    <!--    <view class="weui-footer weui-footer_fixed-bottom">
           <navigator url="tjservice" class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">打赏开发者 </navigator>
             <view class="weui-footer__text">Copyright © 2016-2018 tjservice.cn</view>
-        </view>
- </view>
+        </view> -->
   </view>
-
-
+</view>
